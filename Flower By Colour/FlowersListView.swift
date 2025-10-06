@@ -13,6 +13,7 @@ struct FlowersListView: View {
     @State var flowers: [Flower] = []
     @State var totalFlower: Int
     @State var page: Int = 1
+    @State var hideMoreBtn: Bool = false
     
     let columns = [
         GridItem(.flexible()),
@@ -37,22 +38,26 @@ struct FlowersListView: View {
                     }
                     HStack {
                         Button( action: {
+                            hideMoreBtn = false
                             getFlowers()
                         }){
                             customButtonView(text: "All", color: .orange)
                         }
                         
                         Button( action: {
+                            hideMoreBtn = true
                             getFlowersByColour(color: 0)
                         }){
                             customButtonView(text: "Red", color: .red)
                         }
                         Button( action: {
+                            hideMoreBtn = true
                             getFlowersByColour(color: 5)
                         }){
                             customButtonView(text: "Green", color: .green)
                         }
                         Button( action: {
+                            hideMoreBtn = true
                             getFlowersByColour(color: 8)
                         }){
                             customButtonView(text: "Blue", color: .blue)
@@ -67,13 +72,17 @@ struct FlowersListView: View {
                                     .scaledToFill()
                             }
                         }
-                        Button(action: {
-                            getMoreFlower()
-                        }){
-                            customButtonView(text: "More Flower", color: .purple)
-                                .padding()
+                        if !hideMoreBtn {
+                            Button(action: {
+                                getMoreFlower()
+                            }){
+                                customButtonView(text: "More Flower", color: .purple)
+                                    .padding()
+                            }
                         }
                     }
+                    .navigationTitle("Flowers")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
         }
