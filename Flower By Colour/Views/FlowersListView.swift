@@ -25,8 +25,10 @@ struct FlowersListView: View {
                     Text("Fetching Flower Data...")
                 }
                 .onAppear {
-                    flowersListViewModel.getFlowers()
-                    currentTitle = " All Flowers"
+                    Task {
+                        await flowersListViewModel.getFlowers()
+                    }
+                    currentTitle = "All Flowers"
                 }
             } else {
                 VStack {
@@ -38,7 +40,9 @@ struct FlowersListView: View {
                     HStack {
                         Button( action: {
                             flowersListViewModel.hideMoreBtn = false
-                            flowersListViewModel.getFlowers()
+                            Task {
+                                await flowersListViewModel.getFlowers()
+                            }
                             currentTitle = "All Flowers"
                         }){
                             customButtonView(text: "All", color: .orange)
@@ -46,21 +50,27 @@ struct FlowersListView: View {
                         
                         Button( action: {
                             flowersListViewModel.hideMoreBtn = true
-                            flowersListViewModel.getFlowersByColour(color: 0)
+                            Task {
+                                await flowersListViewModel.getFlowersByColour(color: 0)
+                            }
                             currentTitle = "Red Flowers"
                         }){
                             customButtonView(text: "Red", color: .red)
                         }
                         Button( action: {
                             flowersListViewModel.hideMoreBtn = true
-                            flowersListViewModel.getFlowersByColour(color: 5)
+                            Task {
+                                await flowersListViewModel.getFlowersByColour(color: 5)
+                            }
                             currentTitle = "Green Flowers"
                         }){
                             customButtonView(text: "Green", color: .green)
                         }
                         Button( action: {
                             flowersListViewModel.hideMoreBtn = true
-                            flowersListViewModel.getFlowersByColour(color: 8)
+                            Task {
+                                await flowersListViewModel.getFlowersByColour(color: 8)
+                            }
                             currentTitle = "Blue Flowers"
                         }){
                             customButtonView(text: "Blue", color: .blue)
@@ -79,7 +89,9 @@ struct FlowersListView: View {
                         }
                         if !flowersListViewModel.hideMoreBtn {
                             Button(action: {
-                                flowersListViewModel.getMoreFlower()
+                                Task {
+                                    await flowersListViewModel.getMoreFlower()
+                                }
                             }){
                                 customButtonView(text: "More Flower", color: .purple)
                                     .padding()
