@@ -12,17 +12,21 @@ Upon loading the app the user should see a list of all flowers images. When user
 Features
 1. reusable view
 2. responsive swiftUI
+3. MVVM design pettern
 
 Screenshots
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-06 at 14 08 26" src="https://github.com/user-attachments/assets/70e72324-9526-4703-96cb-0785ee5b5024" />
+<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-07 at 09 39 21" src="https://github.com/user-attachments/assets/9d3e8537-2bd4-4b6e-9930-95700690f06d" />
 
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-06 at 14 08 24" src="https://github.com/user-attachments/assets/a6030f76-03c2-4c9f-993e-0d8f60ea3e35" />
+<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-07 at 09 39 17" src="https://github.com/user-attachments/assets/cb431def-3b91-4271-98ce-fb5d45d2eeab" />
 
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-06 at 14 08 21" src="https://github.com/user-attachments/assets/3468eaca-e831-4f46-9297-4fcfdf053465" />
+<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-07 at 09 39 14" src="https://github.com/user-attachments/assets/fba58cec-f48a-427b-af9b-4150c7dd3507" />
 
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-06 at 14 08 17" src="https://github.com/user-attachments/assets/ce9abf5b-d6ef-4703-80c0-44755b317811" />
+<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-07 at 09 39 04" src="https://github.com/user-attachments/assets/4ae10f7c-fbdb-4c37-8079-81fb50c67452" />
 
-https://github.com/user-attachments/assets/f7f77494-bb5b-4887-ac8c-bbdfd00839c1
+<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2025-10-07 at 09 38 58" src="https://github.com/user-attachments/assets/656370a2-bc75-40c7-b429-700b087bb8b7" />
+
+Demo
+![DB432820-7BBA-4255-AC8F-C4A892E47645_1_206_a](https://github.com/user-attachments/assets/e520e918-d05c-48d1-8941-ce548f77d3a5)
 
 Development Environment: 
 	•	Xcode: 26.0.1
