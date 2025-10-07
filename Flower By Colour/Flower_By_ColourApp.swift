@@ -11,7 +11,7 @@ import SwiftUI
 struct Flower_By_ColourApp: App {
     var body: some Scene {
         WindowGroup {
-            FlowersListView(totalFlower: 0)
+            FlowersListView()
         }
     }
 }

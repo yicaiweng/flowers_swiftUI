@@ -17,6 +17,7 @@ struct Photos: Codable {
 }
 
 struct Flower: Identifiable, Codable {
+    var title: String
     var id: String
     var farm: Int
     var server: String
