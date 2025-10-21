@@ -26,5 +26,10 @@ struct FlowerDetailView: View {
 }
 
 #Preview {
-    FlowerDetailView(flowerDetail: Flower(title: "Flower",id: "54835340032", farm: 66, server: "65535", secret: "3b4604e002"))
+    let title: String = "Flower"
+    let id: String = "54835340032"
+    let farm: Int = 66
+    let server: String = "65535"
+    let secret: String = "3b4604e002"
+    FlowerDetailView(flowerDetail: Flower(title: title, id: id, farm: farm, server: server, secret: secret))
 }

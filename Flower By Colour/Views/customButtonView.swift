@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct customButtonView: View {
+struct CustomButtonView: View {
     var text: String
     var color: Color
     
@@ -24,5 +24,7 @@ struct customButtonView: View {
 }
 
 #Preview {
-    customButtonView(text: "button", color: .green)
+    let text: String = "Button"
+    let color: Color = .green
+    CustomButtonView(text: text, color: color)
 }

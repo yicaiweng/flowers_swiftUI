@@ -24,9 +24,14 @@ struct FlowerImageView: View {
     }
 }
 
-#Preview {
+#Preview {    
+    let title: String = "Flower"
+    let id: String = "54835340032"
+    let farm: Int = 66
+    let server: String = "65535"
+    let secret: String = "3b4604e002"
     FlowerImageView(
-        flower: Flower(title: "flower",id: "54835340032", farm: 66, server: "65535", secret: "3b4604e002"),
+        flower: Flower(title: title, id: id, farm: farm, server: server, secret: secret),
         width: 200,
         height: 200
     )

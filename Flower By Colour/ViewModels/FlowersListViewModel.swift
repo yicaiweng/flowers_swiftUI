@@ -10,6 +10,7 @@ import Observation
 
 @Observable class FlowersListViewModel {
     private let apiKey = "a5e95177da353f58113fd60296e1d250"
+    private let apiURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&text=flowers&api_key="
     
     var flowers: [Flower] = []
     var totalFlower: Int = 0 // initialize to avoid uninitialized stored property error
@@ -18,46 +19,41 @@ import Observation
     
     init() {}
     
-    func getFlowers() async {
-          guard let url = URL(string: "https://api.flickr.com/services/rest/?method=flickr.photos.search&text=flowers&api_key=\(apiKey)&format=json&nojsoncallback=1&page=1&per_page=21") else { return }
-          do {
-              let (data, resp) = try await URLSession.shared.data(from: url)
-              let decoded = try JSONDecoder().decode(FlowerResp.self, from: data)
-              await MainActor.run {
-                  self.totalFlower = decoded.photos.total
-                  self.flowers = decoded.photos.photo
-              }
-          } catch {
-              print("Request failed:", error)
-          }
-      }
-    
-    func getFlowersByColour(color: Int) async {
-        guard let url = URL(string: "https://api.flickr.com/services/rest/?method=flickr.photos.search&text=flowers&api_key=\(apiKey)&format=json&nojsoncallback=1&page=1&per_page=21&color_codes=\(color)") else { return }
-        do{
-            let (data, resp) = try await URLSession.shared.data(from: url)
-            let decoded = try JSONDecoder().decode(FlowerResp.self, from: data)
-            await MainActor.run {
-                self.totalFlower = decoded.photos.total
-                self.flowers = decoded.photos.photo
-            }
-        } catch {
-            print("Request failed: ", error)
+    func fetchFlowers(color: Int? = nil, loadMore: Bool = false) async {
+        if loadMore {
+            page += 1
+        } else {
+            page = 1
         }
-    }
-    
-    func getMoreFlower() async {
-        page += 1
-        guard let url = URL(string: "https://api.flickr.com/services/rest/?method=flickr.photos.search&text=flowers&api_key=\(apiKey)&format=json&nojsoncallback=1&page=\(page)&per_page=21") else { return }
+
+        var apiURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search"
+        apiURL += "&text=flowers"
+        apiURL += "&api_key=\(apiKey)"
+        apiURL += "&format=json&nojsoncallback=1"
+        apiURL += "&page=\(page)&per_page=21"
+        
+        if let color = color {
+            apiURL += "&color_codes=\(color)"
+        }
+        print(apiURL)
+        guard let url = URL(string: apiURL) else { return }
+        
         do {
-            let (data, resp) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(from: url)
             let decoded = try JSONDecoder().decode(FlowerResp.self, from: data)
+            
             await MainActor.run {
                 self.totalFlower = decoded.photos.total
-                self.flowers = decoded.photos.photo
+                
+                if loadMore {
+                    self.flowers += decoded.photos.photo
+                } else {
+                    self.flowers = decoded.photos.photo
+                }
+                print(self.flowers)
             }
         } catch {
-            print("Request failed: ", error)
+            print("Request failed:", error)
         }
     }
 }
